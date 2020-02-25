@@ -7,6 +7,8 @@
     <title>Document</title>
 </head>
 <body>
+@extends('layouts.template')
+@section('konten')
     @foreach($mahasiswa as $data)
         <h3>{{$data->nama}}<small>[{{$data->nim}}]</small> </h3>
         <h5>Hobi : 
@@ -20,5 +22,6 @@
         </h4>
         <hr>
     @endforeach
+    @endsection
 </body>
 </html>
