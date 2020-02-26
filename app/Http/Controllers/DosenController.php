@@ -92,7 +92,7 @@ class DosenController extends Controller
      * @param  \App\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dosen $dosen)
+    public function destroy($id)
     {
         $dosen = Dosen::findOrFail($id)->delete();
         return redirect()->route('dosen.index')
