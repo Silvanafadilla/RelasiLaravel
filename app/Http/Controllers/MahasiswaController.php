@@ -55,7 +55,7 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        $mhs = Mahasiswa::findOrFile($id);
+        $mhs = Mahasiswa::findOrFail($id);
         return view('mahasiswa.show',compact('mhs'));
     }
 
@@ -65,10 +65,11 @@ class MahasiswaController extends Controller
      * @param  \App\Mahasiswa  $mahasiswa
      * @return \Illuminate\Http\Response
      */
-    public function edit($edit)
+    public function edit($id)
     {
-        $mhs = Mahasiswa::findOrFile($id);
-        return view('mahasiswa.edit', compact('mhs'));
+        $dosen = Dosen::all();
+        $mhs = Mahasiswa::findOrFail($id);
+        return view('mahasiswa.edit', compact('mhs', 'dosen'));
     }
 
     /**
@@ -80,7 +81,7 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mhs = Mahasiswa::findOrFile($id);
+        $mhs = Mahasiswa::findOrFail($id);
         $mhs->nama = $request->nama;
         $mhs->nim = $request->nim;
         $mhs->id_dosen = $request->id_dosen;
